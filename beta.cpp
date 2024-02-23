@@ -68,6 +68,87 @@ double computePriceSpread(const std::vector<OrderBookEntry>& entries) {
     return highest - lowest;
 }
 
+// Program Menu Function
+void printMenu() {
+	std::cout << "=================\n";
+	std::cout << "1: Get Help\n";
+	std::cout << "2: Market Stats\n";
+	std::cout << "3: Make Offers\n";
+	std::cout << "4: Place Bids\n";
+	std::cout << "5: Your Wallet\n";
+	std::cout << "6: Continue\n";
+	std::cout << "=================\n";
+}
+
+// Function to get the user input
+int getUserOptions() {
+	int userOption;
+	std::cout << "Select an option from the menu: ";
+	std::cin >> userOption;
+	std::cout << "Your selected option is: " << userOption << "\n";
+	return userOption;
+}
+
+// Help Function
+void userHelp() {
+	std::cout << "This is help menu.\n";
+	std::cout << "Press 1 for account details.\n";
+	std::cout << "Press 2 to change password.\n";
+	// Repeat the menu design from here... (DRY)
+}
+// Market Stats Function
+void marketStats() {
+	std::cout << "Today market is bullish.\n";
+	std::cout << "Press 1 to see last week stats.\n";
+	std::cout << "Press 2 to see last month stats.\n";
+	// Repeat the menu design from here... (DRY)
+}
+// Help Function
+void enterAsk() {
+	std::cout << "Make your offers to sale currency.\n";
+}
+// Help Function
+void enterBid() {
+	std::cout << "Bid to buy currency.\n";
+}
+// Help Function
+void checkWallet() {
+	std::cout << "Check your Balance\n";
+}
+// Help Function
+void nextTimeFrame() {
+	std::cout << "Go to next timeframe.\n";
+}
+// Function to returning an output based on the User input
+void processUserOptions(int userOption) {
+	if (userOption <= 0 || userOption >= 7 || std::cin.fail()) {
+		std::cin.clear();
+		std::cin.ignore();
+		std::cout << "\x1b[1mError! Error!\x1b[0m\n"
+				<< "\x1b[1mChoose an option from 1-6 only!\x1b[0m\n";
+	}
+	switch (userOption) {
+		case 1:
+			userHelp();
+			break;
+		case 2:
+			marketStats();
+			break;
+		case 3:
+			enterAsk();
+			break;
+		case 4:
+			enterBid();
+			break;
+		case 5:
+			checkWallet();
+			break;
+		case 6:
+			nextTimeFrame();
+			break;
+	}
+}
+
 int main () {
 	// Constraint the data in the program
 	// try to write very clear code that does not use too much implicit information
@@ -128,6 +209,13 @@ int main () {
 	std::cout << "Lowest Bid Price: " << computeLowPrice(entries) << "\n";
 	std::cout << "Highest BidPrice: " << computeHighPrice(entries) << "\n";
 	std::cout << "Price Bid Spread: " << computePriceSpread(entries) << "\n";
+
+
+	// while (true) {
+	// 	printMenu();
+	// 	int userOption = getUserOptions();
+	// 	processUserOptions(userOption);
+	// }
 
 	return 0;
 }
