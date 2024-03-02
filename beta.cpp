@@ -5,7 +5,6 @@
 enum class OrderBookType {bid, ask};
 OrderBookType orderType = OrderBookType::ask;
 
-
 // define a class that can store the data for an entry in the order book
 class OrderBookEntry { 
 	private:
